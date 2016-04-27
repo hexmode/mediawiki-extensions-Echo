@@ -482,6 +482,9 @@
 					data = data || {};
 
 					for ( id in data.list ) {
+						if ( !data.list.hasOwnProperty( id ) ) {
+							continue;
+						}
 						notifData = data.list[ id ];
 						content = notifData[ '*' ] || {};
 
