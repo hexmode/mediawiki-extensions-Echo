@@ -821,9 +821,11 @@ class EchoHooks {
 			!$user->getOption( 'echo-dismiss-beta-invitation' )
 		) {
 			$unreadWikis = EchoUnreadWikis::newFromUser( $user );
-			$counts = $unreadWikis->getUnreadCounts();
-			if ( count( $counts ) > 1 ) {
-				$sk->getOutput()->addJsConfigVars( 'wgEchoShowBetaInvitation', true );
+			if ( $unreadWikis ) {
+				$counts = $unreadWikis->getUnreadCounts();
+				if ( count( $counts ) > 1 ) {
+					$sk->getOutput()->addJsConfigVars( 'wgEchoShowBetaInvitation', true );
+				}
 			}
 		}
 
